@@ -10,7 +10,6 @@ class TOC extends Component {
 			return false;
 		}
 		return true;
-
 	}
 	render() {
 		console.log('===>TOC render')
