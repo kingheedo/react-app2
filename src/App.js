@@ -9,6 +9,7 @@ import CreateContent from './components/CreateContent';
 class App extends Component {
 	constructor(props) {
 		super(props);
+		this.max_content_id = 3;
 		this.state = {
 			mode: 'create',
 			selected_content_id: 2,
@@ -42,9 +43,14 @@ class App extends Component {
 			}
 			_article = <ReadContent title={_title} desc={_desc} />
 		} else if (this.state.mode === 'create') {
-			_article = <CreateContent onSubmit={function (_title, _desc) { 
+			_article = <CreateContent onSubmit={function (_title, _desc) {
+				console.log(_title, _desc)
+				this.max_content_id = this.max_content_id + 1;
+				var _contents = this.state.contents.concat({
+					id: this.max_content_id, title: _title, desc: _desc
+				})
 				this.setState({
-					
+					contents: _contents
 				})
 			}.bind(this)} />
 		}
